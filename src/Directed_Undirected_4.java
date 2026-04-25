@@ -19,6 +19,19 @@ notes:
 int[m][n] - so m is the rows and n is the columsn matrix [row][column]
  */
 
+
+    public static void main(String[] args) {
+        int[][] matrix= {
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1},
+                {0, 0, 0, 0}
+        };
+
+    } // END MAIN
+
+
+
 public boolean isConnected(int [][] adjMatrix){ // taking an adjanecy matrix not an actual matrix just the numbers saying true/false if they are connected or not with edge
     int n = adjMatrix.length; // i can just get length of matrix with this cool since its just a double array you can use the array functions
         // this is the number of rows for length though so this is the number of vertices in the graph
@@ -33,9 +46,9 @@ public boolean isConnected(int [][] adjMatrix){ // taking an adjanecy matrix not
         if (!visited[i]) { // so i do dfs and then now im like were they all visited and if not then its not connected
             return false;
         }
-        return true;
-    }
 
+    }
+    return true;
 } // END ISCONENCTED METHOD
 
 
@@ -50,7 +63,7 @@ public boolean isConnected(int [][] adjMatrix){ // taking an adjanecy matrix not
 
         for ( int i = 0; i < n; i++ ){ // for all the nodes if they have not been visited and there is a connection to another then do this again but with my new node
                 // so when i do it again im marking the one im doing as visited and getting the rows for my column and looking at all the neighbors of my curren cool
-            if (!visited[i] && (inputMatrix[node][i] == 1 || inputMatrix[i][node] == 1) ){
+            if (!visited[i] && (inputMatrix[node][i] == 1 || inputMatrix[i][node] == 1) ){ // its or because it doesnt matter the direction
                 DFS(i,inputMatrix,visited);
             }
         }
