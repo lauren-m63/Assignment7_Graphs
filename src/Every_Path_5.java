@@ -22,12 +22,32 @@ public class Every_Path_5 {
                 {0, 0, 0, 1},
                 {0, 0, 0, 0}};
 
-        findPath(matrixnotconnected);
+        int[][] graph = {
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1},
+                {1, 0, 0, 0}
+        };
+
+       if(findPath(matrixnotconnected)){
+           System.out.println("CYCLE");
+       }
+       else  {
+           System.out.println("NO CYCLE");
+       }
+
+        if(findPath(graph)){
+            System.out.println("CYCLE");
+        }
+        else  {
+            System.out.println("NO CYCLE");
+        }
+
 
 
     } // END MAIN
 
-    public static void findPath(int[][] matrix) {
+    public static boolean findPath(int[][] matrix) {
         int n = matrix.length; // do i even do this if its not 4 nodes like hsould i do a check if n < n then continue probbaly i think wait
 
         for (int i = 0; i < n; i++) { // for the first node
@@ -47,12 +67,18 @@ public class Every_Path_5 {
 
                         if (matrix[l][i] != 0) { // if not 0 then it means that its connected from end l to beginning i
                             System.out.println("cycle exists" + i + " " + j + " " + k + " "+l);
+                            return true;
+                        }
+                        else{
+                           // System.out.println("no cycle" + i + " " + j + " " + k);
                         }
 
                     } //end l
                 } //end k
             } //end j
         }// end i
+
+        return false;
 
     } // END FINDPATH METHOD
 
