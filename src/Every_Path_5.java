@@ -11,17 +11,50 @@ public class Every_Path_5 {
 
     not adjency grpah
 
+    not a visited thing
+
      */
 
     public static void main(String[] args) {
-        int[][]matrixnotconnected=
+        int[][]matrixnotconnected =
                 {{0, 1, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 1},
                 {0, 0, 0, 0}};
 
+        findPath(matrixnotconnected);
 
-    }
+
+    } // END MAIN
+
+    public static void findPath(int[][] matrix) {
+        int n = matrix.length; // do i even do this if its not 4 nodes like hsould i do a check if n < n then continue probbaly i think wait
+
+        for (int i = 0; i < n; i++) { // for the first node
+
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    continue;
+                }
+
+                for (int k = 0; k < n; k++) {
+                    if (matrix[j][k] == 0) {
+                        continue;
+                    }
+
+                    for (int l = 0; l < n; l++) {
+                        if (matrix[k][l] == 0) {continue;}
+
+                        if (matrix[l][i] != 0) { // if not 0 then it means that its connected from end l to beginning i
+                            System.out.println("cycle exists" + i + " " + j + " " + k + " "+l);
+                        }
+
+                    } //end l
+                } //end k
+            } //end j
+        }// end i
+
+    } // END FINDPATH METHOD
 
 
 
