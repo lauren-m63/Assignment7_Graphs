@@ -44,6 +44,8 @@ public static boolean isConnected(int[][] adjMatrix){ // taking an adjanecy matr
     int n = adjMatrix.length; // i can just get length of matrix with this cool since its just a double array you can use the array functions
         // this is the number of rows for length though so this is the number of vertices in the graph
         // since its an adjceny graph the rows and columsn are the same thouhgh for this but usually its by row anyway?
+
+
     boolean[] visited = new boolean[n]; // array of booleans that let me know if its visited not double arrya though
         //each index represents the node since its likegoing by the length which is teh number of vertexes
         // so this is creating a list of boolean with length n which is how many nodes there are- so for each row its like have we visited this one
