@@ -1,10 +1,17 @@
-public class Draw_Graph_6 {
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+
+
+public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j panel?
 
 
     // if output is a text representation of graph i get extra credit
     // o need to make a representation or i don t get credit correction
 
     /*
+    i feel like the question is easy but i dont understand how it is written as a question idk what that was asking me until explained
 
     for each vertex i need to create 2 directed edges coming from it but its a cirular array so i need to connect the edged too
     so im looking at the indexes and then creating edges for each node
@@ -42,8 +49,8 @@ public class Draw_Graph_6 {
             int right = (2* i + 1)% vertices.length;
             int left = (2* i + 2)% vertices.length;
 
-            adjMatrix[i][left] = i;
-            adjMatrix[i][right] = i;
+            adjMatrix[i][left] = 1;
+            adjMatrix[i][right] = 1;
 
         } // end for loop
 
@@ -55,6 +62,20 @@ public class Draw_Graph_6 {
         }
 
     }// END DRAWGRAPH
+
+
+    @Override
+    protected void paintComponent(Graphics g){ // must be protected
+            super.paintComponent(g);
+            int []x = {
+                    300, 200, 400, 150, 250, 350, 450
+            };
+            int []y = {50, 150, 150, 250, 250, 250, 250};
+
+
+
+
+    }// end image of graph
 
 
 
