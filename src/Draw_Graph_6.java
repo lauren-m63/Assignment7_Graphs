@@ -27,22 +27,25 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
 
      */
 
-    String [] vertices;
+    static String [] vertices;
+    static int[][]adjMatrix;
 
 
     public Draw_Graph_6(String s) {
         vertices = s.split(" ");
+
+        DrawGraph();
     }
     public static void main (String[] args){
 
        String input1= "ANT CUN BOG AMA DC TOL SAN";
-       DrawGraph(input1);
+       //DrawGraph(input1);
 
        JFrame frame = new JFrame("Draw Graph 6");
        Draw_Graph_6 draw_graph = new Draw_Graph_6(input1);
 
        frame.add(draw_graph);
-       frame.setSize(400,400);
+       frame.setSize(500,500);
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        frame.setVisible(true);
 
@@ -51,13 +54,15 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
 
 
 
-    public static void DrawGraph(String s){
-        if (s.trim().isEmpty()){
-            return; // if nothing in there
-        }
+    public static void DrawGraph(){
+//        if (s.trim().isEmpty()){
+//            return; // if nothing in there
+//        }
 
-        String[]vertices = s.split(" ");
-        int[][] adjMatrix = new int[vertices.length][vertices.length];
+        int n = vertices.length;
+
+        //String[]vertices = s.split(" ");
+        adjMatrix = new int[vertices.length][vertices.length];
 
         for (int i = 0; i < vertices.length; i++){ // literally just a loop and math
             int right = (2* i + 1)% vertices.length;
@@ -91,21 +96,35 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
 
         for (int i = 0; i < vertices.length; i++){
             double angle = 2 * Math.PI* i / n;
-            x[i] = (int)(300 + 200 * Math.cos(angle));
-            y[i] = (int)(200 + 200 * Math.sin(angle));
+            x[i] = (int)(250 + 200 * Math.cos(angle));
+            y[i] = (int)(250 + 200 * Math.sin(angle));
             // putting in circles because all my lines were overlapping and weird looking- like grid vibe
         }
 
-        for (int i = 0; i < vertices.length; i++){ // literally just a loop and math
-            int right = (2* i + 1)% vertices.length;
-            int left = (2* i + 2)% vertices.length;
+//        for (int i = 0; i < vertices.length; i++){ // literally just a loop and math
+//            int right = (2* i + 1)% vertices.length;
+//            int left = (2* i + 2)% vertices.length;
+//
+//
+//            g.drawLine(x[i], y[i], x[right], y[right]);
+//            g.drawLine(x[i], y[i], x[left], y[left]);
+//
+//        } // end for loop
 
 
-            g.drawLine(x[i], y[i], x[right], y[right]);
-            g.drawLine(x[i], y[i], x[left], y[left]);
+        for (int i = 0; i < vertices.length; i++){
+            for (int j = 0; j < vertices.length; j++){
+                if(adjMatrix[i][j] == 1){
+                    g.drawLine(x[i], y[i], x[j], y[j]);
+                }
+            }
+        }
 
-        } // end for loop
 
+
+
+
+        // drawing labels last keep here
         for (int i = 0; i<vertices.length; i++){
             g.drawString(vertices[i], x[i], y[i]);
         }
