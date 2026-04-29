@@ -22,6 +22,10 @@ public class Draw_Graph_6 {
 
     public static void main (String[] args){
 
+       String input1= "ANT CUN BOG AMA DC TOL SAN";
+       DrawGraph(input1);
+
+
     }// ENDMAIN
 
 
@@ -34,7 +38,7 @@ public class Draw_Graph_6 {
         String[]vertices = s.split(" ");
         int[][] adjMatrix = new int[vertices.length][vertices.length];
 
-        for (int i = 0; i < vertices.length; i++){
+        for (int i = 0; i < vertices.length; i++){ // literally just a loop and math
             int right = (2* i + 1)% vertices.length;
             int left = (2* i + 2)% vertices.length;
 
@@ -43,6 +47,12 @@ public class Draw_Graph_6 {
 
         } // end for loop
 
+        for (int i = 0; i < vertices.length; i++){
+            for (int j = 0; j < vertices.length; j++){
+                System.out.print(adjMatrix[i][j] + " ");
+            }
+            System.out.println(); // printing jsut as the adjency graph and not the image rn ill make do that in another class? / method
+        }
 
     }// END DRAWGRAPH
 
