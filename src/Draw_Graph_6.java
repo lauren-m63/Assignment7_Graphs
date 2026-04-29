@@ -27,10 +27,24 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
 
      */
 
+    String [] vertices;
+
+
+    public Draw_Graph_6(String s) {
+        vertices = s.split(" ");
+    }
     public static void main (String[] args){
 
        String input1= "ANT CUN BOG AMA DC TOL SAN";
        DrawGraph(input1);
+
+       JFrame frame = new JFrame("Draw Graph 6");
+       Draw_Graph_6 draw_graph = new Draw_Graph_6(input1);
+
+       frame.add(draw_graph);
+       frame.setSize(400,400);
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.setVisible(true);
 
 
     }// ENDMAIN
@@ -67,10 +81,25 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
     @Override
     protected void paintComponent(Graphics g){ // must be protected
             super.paintComponent(g);
+
+            int n = vertices.length;
             int []x = {
                     300, 200, 400, 150, 250, 350, 450
             };
             int []y = {50, 150, 150, 250, 250, 250, 250};
+
+        for (int i = 0; i < vertices.length; i++){ // literally just a loop and math
+            int right = (2* i + 1)% vertices.length;
+            int left = (2* i + 2)% vertices.length;
+
+            g.drawLine(x[i], y[i], x[right], y[left]);
+            g.drawLine(x[i], y[i], x[left], y[right]);
+
+        } // end for loop
+
+        for (int i = 0; i<vertices.length; i++){
+            g.drawString(vertices[i], x[i], y[i]);
+        }
 
 
 
