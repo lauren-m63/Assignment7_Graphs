@@ -92,8 +92,8 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
             int right = (2* i + 1)% vertices.length;
             int left = (2* i + 2)% vertices.length;
 
-            g.drawLine(x[i], y[i], x[right], y[left]);
-            g.drawLine(x[i], y[i], x[left], y[right]);
+            g.drawLine(x[i], y[i], x[right], y[right]);
+            g.drawLine(x[i], y[i], x[left], y[left]);
 
         } // end for loop
 
