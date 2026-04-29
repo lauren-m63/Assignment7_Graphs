@@ -83,14 +83,23 @@ public class Draw_Graph_6 extends JPanel { // whats diff between jframe and j pa
             super.paintComponent(g);
 
             int n = vertices.length;
-            int []x = {
-                    300, 200, 400, 150, 250, 350, 450
-            };
-            int []y = {50, 150, 150, 250, 250, 250, 250};
+            if (n== 0){return;}
+//            int []x = {300, 200, 400, 150, 250, 350, 450};
+//            int []y = {50, 150, 150, 250, 250, 250, 250};
+        int []x = new int[n];
+        int []y = new int[n];
+
+        for (int i = 0; i < vertices.length; i++){
+            double angle = 2 * Math.PI* i / n;
+            x[i] = (int)(300 + 200 * Math.cos(angle));
+            y[i] = (int)(200 + 200 * Math.sin(angle));
+            // putting in circles because all my lines were overlapping and weird looking- like grid vibe
+        }
 
         for (int i = 0; i < vertices.length; i++){ // literally just a loop and math
             int right = (2* i + 1)% vertices.length;
             int left = (2* i + 2)% vertices.length;
+
 
             g.drawLine(x[i], y[i], x[right], y[right]);
             g.drawLine(x[i], y[i], x[left], y[left]);
